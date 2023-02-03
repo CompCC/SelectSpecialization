@@ -1,9 +1,29 @@
-﻿int ReadData(string msg)
+﻿// Написать программу, которая из имющегося массива строк формирут массив из строк,
+// длинна которых меньше либо равна 3 симвлоа. Первоначальный массив можно ввести с клавиатуры, 
+// либо задать на старте выполнения алгорима. При решении не рекомендуется 
+// пользоваться коллекциями, лучше обойтись исключительно массивами.
+
+string[] arr = new string[] { "hello", "2", "world", ":-)" };
+string[] res = new string[arr.Length];
+int j = 0;
+for (int i = 0; i < arr.Length; i++)
 {
-    Console.WriteLine(msg);
-    return int.Parse(Console.ReadLine() ?? "0");
+    if (arr[i].Length <= 3)
+    {
+        res[j] = arr[i];
+        j++;
+    }
 }
-void PrintData(string msg, string res)
+res = res.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+Print1DArr(res);
+
+void Print1DArr(string[] arr)
 {
-    Console.WriteLine(msg + res);
+    Console.Write("[");
+    for (int i = 0; i < arr.Length - 1; i++)
+    {
+        Console.Write(arr[i] + ", ");
+    }
+    Console.WriteLine(arr[arr.Length - 1] + "]");
 }
